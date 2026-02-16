@@ -28,6 +28,22 @@ bun install
 
 ## Yapılandırma
 
+### Otomatik kurulum (önerilen)
+
+```bash
+bun setup
+```
+
+Kurulum sihirbazı:
+
+1. Tarayıcınızda yemeksepeti.com açılır
+2. Giriş yaparsınız
+3. F12 → Console'a verilen script'i yapıştırırsınız
+4. Çıkan JSON'ı terminale yapıştırırsınız
+5. `.env` otomatik oluşturulur ✅
+
+### Manuel kurulum
+
 Proje kök dizinine `.env` dosyası oluşturun:
 
 ```env
@@ -39,11 +55,7 @@ YS_PERSEUS_CLIENT_ID=your_perseus_client_id
 YS_PERSEUS_SESSION_ID=your_perseus_session_id
 ```
 
-### Token nasıl alınır?
-
-1. Tarayıcıda [yemeksepeti.com](https://www.yemeksepeti.com)'a giriş yapın
-2. DevTools (F12) → Application → Cookies → `www.yemeksepeti.com`
-3. Aşağıdaki cookie'leri `.env`'ye kopyalayın:
+Token'ları almak için: Tarayıcıda [yemeksepeti.com](https://www.yemeksepeti.com)'a giriş yapın → F12 → Application → Cookies:
 
 | Cookie | .env değişkeni |
 |--------|----------------|
@@ -52,7 +64,7 @@ YS_PERSEUS_SESSION_ID=your_perseus_session_id
 | `dhhPerseusGuestId` | `YS_PERSEUS_CLIENT_ID` |
 | `dhhPerseusSessionId` | `YS_PERSEUS_SESSION_ID` |
 
-4. `YS_USER_ID` ve `YS_CUSTOMER_HASH` için DevTools → Network'te herhangi bir API isteğinin parametrelerine bakın (`customer_id` ve `customer_hash`).
+`YS_USER_ID` ve `YS_CUSTOMER_HASH`: DevTools → Network → herhangi bir API isteğinin parametreleri (`customer_id`, `customer_hash`).
 
 ## Kullanım
 
@@ -96,7 +108,8 @@ Adres Seçimi → Anasayfa (Restoranlar) → Menü → Sepet
 ```
 src/
 ├── api.ts      # API client, cache, retry, cart, yardımcı fonksiyonlar
-└── index.ts    # TUI ekranları ve navigasyon
+├── index.ts    # TUI ekranları ve navigasyon
+└── setup.ts    # Hesap kurulum sihirbazı
 ```
 
 ## Lisans
